@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Stack
 {
@@ -26,12 +25,18 @@ namespace Stack
 
             Console.WriteLine("\n\n\n");
 
-            LinkedListStackFunctions linkedFunctions = new LinkedListStackFunctions();
-            linkedFunctions.Push(100);
-            linkedFunctions.Push(200);
-            linkedFunctions.Push(300);
-            linkedFunctions.Push(400);
-            
+            LinkedListStackFunctions listFunctions = new LinkedListStackFunctions();
+            listFunctions.Push(100);
+            listFunctions.Push(200);
+            listFunctions.Push(300);
+            listFunctions.Push(400);
+            listFunctions.List();
+            Console.WriteLine(listFunctions.Peek()+"\n\n");
+
+            listFunctions.Pop();
+            listFunctions.Pop();
+            listFunctions.List();
+
 
         }
     }

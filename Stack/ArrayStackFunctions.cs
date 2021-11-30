@@ -14,13 +14,11 @@ namespace Stack
         public void Push(int value)
         {
             int[] tempArray = new int[array.Length+1];
-            if (array.Length != 0)
+            for (int i = 0; i < array.Length; i++)
             {
-                for (int i = 0; i < array.Length; i++)
-                {
-                    tempArray[i] = array[i];
-                }
+                tempArray[i] = array[i];
             }
+            
             tempArray[array.Length] = value;
             array = tempArray;
         }
@@ -29,7 +27,7 @@ namespace Stack
         {
             if (array.Length < 1)
             {
-                return 0;
+                return -1;
             }
             int[] tempArray = new int[array.Length-1];
             for (int i = 0; i < tempArray.Length; i++)
@@ -43,9 +41,6 @@ namespace Stack
 
         public void List()
         {
-            foreach (var item in array)
-            {
-            }
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine(array[i]);

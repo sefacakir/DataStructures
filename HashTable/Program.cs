@@ -17,15 +17,24 @@ namespace HashTable
             linearProbing.Insert(new DataItem { Key = 39, Value = 7 });
             linearProbing.List();
 
+            DataItem dataItem = new DataItem
+            {
+                Value = 7,
+                Key = 39
+            };
+            DataItem dataItem2 = new DataItem
+            {
+                Key = 40,
+                Value = 7
+            };
+            Console.WriteLine(linearProbing.Search(dataItem));
+            Console.WriteLine(linearProbing.Search(dataItem2));
 
-            Console.WriteLine(linearProbing.Search(new DataItem { Key = 39, Value = 7 }).Key);
-            Console.WriteLine(linearProbing.Search(new DataItem { Key = 40, Value = 7 }));
+            linearProbing.Delete(dataItem);
+            linearProbing.List();
 
-
-
-
-
-
+            linearProbing.Insert(dataItem);
+            linearProbing.List();
         }
     }
 }

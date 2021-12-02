@@ -22,7 +22,7 @@ namespace HashTable
                 Console.WriteLine("Table Full!!");
                 return;
             }
-            int temp = dataItem.Key % 20;
+            int temp = HashFunction(dataItem.Key);
             if (dataItems[temp] == null)
             {
                 dataItems[temp] = dataItem;
@@ -51,12 +51,13 @@ namespace HashTable
                 if (dataItems[i] != null)
                     Console.WriteLine(i + "   " + dataItems[i].Key + "   " + dataItems[i].Value);
             }
+            Console.WriteLine("\n");
         }
 
         public DataItem Search(DataItem dataItem)
         {
             counter = 0;
-            int temp = dataItem.Key % 20;
+            int temp = HashFunction(dataItem.Key);
             if (dataItems[temp] == null)
             {
                 Console.WriteLine("Search not found!!");
@@ -78,6 +79,40 @@ namespace HashTable
                 counter++;
             }
             return dataItems[temp];
+        }
+
+        public void Delete(DataItem dataItem)
+        {
+            int temp = HashFunction(dataItem.Key);
+            if (dataItems[temp]==null)
+            {
+                Console.WriteLine("Search not found!!");
+                return;
+            }
+            counter = 0;
+            while (dataItems[temp].Key!=dataItem.Key)
+            {
+                temp++;
+                counter++;
+                if (temp == dataItems.Length)
+                {
+                    temp = HashFunction(temp);
+                }
+                if(counter == dataItems.Length)
+                {
+                    Console.WriteLine("Search not found!!!");
+                    return;
+                }
+            }
+
+            //bulunması durumunda buraya geçer.
+            dataItems[temp] = null;//içeriği temizlendi
+            Console.WriteLine(dataItem.Key+" "+dataItem.Value+" silindi.");
+        }
+
+        private int HashFunction(int value)
+        {
+            return value % 20;
         }
     }
 }
